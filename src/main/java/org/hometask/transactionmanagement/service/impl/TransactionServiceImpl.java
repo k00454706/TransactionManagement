@@ -1,6 +1,8 @@
 package org.hometask.transactionmanagement.service.impl;
 
 import org.hometask.transactionmanagement.entity.Transaction;
+import org.hometask.transactionmanagement.exceptions.DuplicateTransactionException;
+import org.hometask.transactionmanagement.exceptions.NonExistTransactionException;
 import org.hometask.transactionmanagement.repository.TransactionRepository;
 import org.hometask.transactionmanagement.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,12 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction createTransaction(Transaction transaction) {
+        if (transaction.getId() != null) {
+            Long transactionId = transaction.getId();
+            if (repository.findById(transactionId) != null) {
+                throw new DuplicateTransactionException("Transaction already exists");
+            }
+        }
         transaction.setCreateTime(LocalDateTime.now());
         transaction.setUpdateTime(LocalDateTime.now());
         return repository.save(transaction);
@@ -24,6 +32,10 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void deleteTransaction(Long id) {
+        Transaction existingTransaction = repository.findById(id);
+        if (existingTransaction == null) {
+            throw new NonExistTransactionException("Transaction not found");
+        }
         repository.delete(id);
     }
 
@@ -31,10 +43,10 @@ public class TransactionServiceImpl implements TransactionService {
     public Transaction modifyTransaction(Long id, Transaction transaction) {
         Transaction existingTransaction = repository.findById(id);
         if (existingTransaction == null) {
-            throw new RuntimeException("Transaction not found");
+            throw new NonExistTransactionException("Transaction not found");
         }
         transaction.setUpdateTime(LocalDateTime.now());
-        return repository.save(transaction);
+        return repository.modify(transaction);
     }
 
     @Override

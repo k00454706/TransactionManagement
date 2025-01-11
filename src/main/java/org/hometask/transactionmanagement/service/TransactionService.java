@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TransactionService {
     /**
-     * 创建交易记录
+     *
      * @param request 交易请求对象
      * @return 交易响应对象
      */
