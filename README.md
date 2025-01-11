@@ -50,11 +50,11 @@ This project implements a transaction management system that allows users to cre
 - Maven
 - Your favorite IDE (IntelliJ IDEA, Eclipse, etc.)
 
-### Installation
+### How to use
 
 1. Clone the repository
 2. Use IntelliJ IDEA open this project as a maven project
 3. Start the project
     The main class is org.hometask.transactionmanagement
 4. Use API tool to test api
-   
+
