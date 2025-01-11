@@ -56,5 +56,5 @@ This project implements a transaction management system that allows users to cre
 2. Use IntelliJ IDEA open this project as a maven project
 3. Start the project
     The main class is org.hometask.transactionmanagement
-4. todo
+4. Use API tool to test api
    
