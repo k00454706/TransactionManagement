@@ -9,14 +9,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/transaction")
+@Tag(name = "Transaction Management", description = "Transaction management APIs")
 public class TransactionController {
     @Autowired
     TransactionService transactionService;
 
+    @Operation(summary = "Create a new transaction")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Transaction created successfully"),
+            @ApiResponse(responseCode = "409", description = "Duplicate transaction"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         try {
@@ -31,6 +43,13 @@ public class TransactionController {
         }
     }
 
+    @Operation(summary = "Delete a transaction by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Transaction deleted successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
+            @ApiResponse(responseCode = "404", description = "Transaction not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTransaction(@PathVariable Long id) {
         try {
@@ -51,6 +70,13 @@ public class TransactionController {
 
     }
 
+    @Operation(summary = "Modify an existing transaction")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Transaction updated successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
+            @ApiResponse(responseCode = "404", description = "Transaction not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> modifyTransaction(
             @PathVariable Long id,
@@ -72,6 +98,10 @@ public class TransactionController {
         }
     }
 
+    @Operation(summary = "Get all transactions")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved all transactions")
+    })
     @GetMapping("/list")
     public ResponseEntity<List<Transaction>> listAllTransactions() {
         List<Transaction> transactions = transactionService.listAllTransactions();
