@@ -84,6 +84,24 @@ This project implements a transaction management system that allows users to cre
 #### Get all transactions after creating another 2 transactions
 ![c6fe584c2c04e02e9f9311e31a4b2bf](https://github.com/user-attachments/assets/7d6e4108-364a-49f0-979c-c06ad924f115)
 
+#### Delete a transaction
+![eda075269eb627371d51ba181d29db3](https://github.com/user-attachments/assets/63fbd8e3-8dcb-44f4-9c98-78b86efc3043)
+![1736645448152](https://github.com/user-attachments/assets/03f7667b-7094-4af2-82ad-0f78e9ff22a4)
+![1736645540013](https://github.com/user-attachments/assets/e6f71968-5efb-4d67-92ce-2014c489f651)
+
+#### Delete a non-exist transaction
+![image](https://github.com/user-attachments/assets/3e04a684-065f-4e4e-a85d-7219ff07a308)
+![25c82fbd5ddb91a1f9a6503386545b0](https://github.com/user-attachments/assets/83a542da-39a9-4197-a1fd-9cdc7fa57053)
+
+
+#### Delete a invalid transaction
+![9a1ed5eeb252d82f49c2df49e944f4c](https://github.com/user-attachments/assets/73b74acc-636d-48a3-a457-b9812b7251dc)
+![image](https://github.com/user-attachments/assets/dc0a3494-d2f2-4272-932b-f44816b62786)
+
+
+
+
+
 
 
 
