@@ -132,7 +132,17 @@ This test suite validates the functionality of the Transaction Repository layer,
 #### TransactionServiceImplTest.java
 This test suite validates the business logic of the Transaction Service implementation using JUnit 5 and Mockito for mocking dependencies.
 
-
-
+### External Libraires outside the standard JDK
+##### 1. com.fasterxml.jackson.datatype.jackson-datatype-jsr310
+Used to soleve a error in TransactionControllerTest.class. Related code is in line 48 and 49:
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESAMPS);
+Without these two line code, there will be a error.
+##### 2. org.apache.maven.plugins.maven-assembly-plugin
+Used to package the progject
+#### 3. org.springdoc.springdoc-openapi-starter-webmvc-ui
+Used to surpport springdoc-openaip.So we can view and test APIs on browser
+#### 4. org.springframework.boot.spring-boot-starter-test
+Used to support testing
 
 
