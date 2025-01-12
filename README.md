@@ -60,6 +60,8 @@ This project implements a transaction management system that allows users to cre
 5. Use Swagger UI to test API
    
    http://localhost:8080/swagger-ui/index.html
+   ![426c73bb619afe5bd08c5aaab2b74ab](https://github.com/user-attachments/assets/38d33cbf-7713-45c3-8205-8471eeb64150)
+
    
 #### Create a new transaction  
 ![e94d565898907c48e13809692ffab7f](https://github.com/user-attachments/assets/7a58fd71-d002-4f32-b5a3-87c603245303)
