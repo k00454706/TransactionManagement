@@ -104,7 +104,11 @@ public class TransactionController {
     })
     @GetMapping("/list")
     public ResponseEntity<List<Transaction>> listAllTransactions() {
-        List<Transaction> transactions = transactionService.listAllTransactions();
-        return ResponseEntity.ok(transactions);
+        try {
+            List<Transaction> transactions = transactionService.listAllTransactions();
+            return ResponseEntity.ok(transactions);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
